@@ -142,10 +142,6 @@ const FormData = () => {
                 <label className="font-bold">Tanggal Pembuatan Akun:</label>{" "}
                 <p>{formatTimestamp(response.user_reg_time)}</p>
               </div>
-              <div>
-                <label className="font-bold">Waktu Login Terakhir:</label>{" "}
-                <p>{formatTimestamp(response.timestamp)}</p>
-              </div>
             </div>
           </div>
         )}
