@@ -12,14 +12,6 @@ const Footer = () => {
         >
           @t4kezy
         </Link>
-        . WDP 1K hanya di{" "}
-        <Link
-          href="https://xcashshop.com"
-          target="_blank"
-          className="underline"
-        >
-          Xcashshop
-        </Link>
       </h6>
     </div>
   );
