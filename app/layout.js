@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className="flex items-center justify-center lg:h-screen">
+        <div className="flex items-center justify-center h-screen">
           <div className="flex flex-col justify-center items-center gap-4 max-w-md p-4">
             {children}
           </div>

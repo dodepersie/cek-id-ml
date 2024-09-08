@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { formatTimestamp, formatUsername } from "@/app/libs/utils";
+import countries from "i18n-iso-countries";
+import Flag from "react-world-flags";
+countries.registerLocale(require("i18n-iso-countries/langs/id.json"));
 
 const FormData = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +14,12 @@ const FormData = () => {
   const [previousResponse, setPreviousResponse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const parseCountryCode = (countryCode) => {
+    return (
+      countries.getName(countryCode.toUpperCase(), "id") || "Unknown Country"
+    );
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -103,28 +112,41 @@ const FormData = () => {
         )}
 
         {response && (
-          <div className="p-6 rounded-lg shadow-md border border-gray-100 leading-loose bg-white">
-            <ul>
-              <li>
-                <strong>Username:</strong> {formatUsername(response.username)}
-              </li>
-              <li>
-                <strong>Negara Pembuatan Akun:</strong>{" "}
-                {response.create_role_country.toUpperCase()}
-              </li>
-              <li>
-                <strong>Negara Terakhir Login:</strong>{" "}
-                {response.this_login_country.toUpperCase()}
-              </li>
-              <li>
-                <strong>Tanggal Pembuatan Akun:</strong>{" "}
-                {formatTimestamp(response.user_reg_time)}
-              </li>
-              <li>
-                <strong>Waktu Login Terakhir:</strong>{" "}
-                {formatTimestamp(response.timestamp)}
-              </li>
-            </ul>
+          <div className="p-6 rounded-lg shadow-md border border-gray-100 leading-loose bg-gray-100">
+            <div className="space-y-1">
+              <div>
+                <label className="font-bold">Username:</label>
+                <p>{formatUsername(response.username)}</p>
+              </div>
+              <div>
+                <label className="font-bold">Negara Pembuatan Akun:</label>{" "}
+                <div className="flex gap-1.5">
+                  <p>{parseCountryCode(response.create_role_country)} </p>
+                  <Flag
+                    code={response.create_role_country.toUpperCase()}
+                    className="w-8 h-8"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="font-bold">Negara Terakhir Login:</label>{" "}
+                <div className="flex gap-1.5">
+                  <p>{parseCountryCode(response.this_login_country)} </p>
+                  <Flag
+                    code={response.this_login_country.toUpperCase()}
+                    className="w-8 h-8"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="font-bold">Tanggal Pembuatan Akun:</label>{" "}
+                <p>{formatTimestamp(response.user_reg_time)}</p>
+              </div>
+              <div>
+                <label className="font-bold">Waktu Login Terakhir:</label>{" "}
+                <p>{formatTimestamp(response.timestamp)}</p>
+              </div>
+            </div>
           </div>
         )}
       </div>
