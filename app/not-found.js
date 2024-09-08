@@ -6,11 +6,11 @@ const NotFound = () => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen space-y-4 px-4">
+    <>
       <div className="flex flex-col justify-center items-center text-center space-y-4">
         <h1 className="text-7xl font-bold">404</h1>
         <h3 className="text-xl leading-loose tracking-normal">
-          Halaman yang kamu cari tidak ditemukan disini 🥲
+          Halaman yang kamu cari tidak ditemukan disini.. 🥲
         </h3>
       </div>
 
@@ -20,7 +20,7 @@ const NotFound = () => {
       >
         Kembali
       </button>
-    </div>
+    </>
   );
 };
 

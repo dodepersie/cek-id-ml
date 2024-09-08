@@ -1,4 +1,3 @@
-// app/api/cek/route.js
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -17,6 +16,7 @@ export async function POST(req) {
 
     return NextResponse.json(data, { status: externalRes.status });
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }
@@ -26,7 +26,7 @@ export async function POST(req) {
 
 export function GET() {
   return NextResponse.json(
-    { message: "GET method is not allowed" },
-    { status: 405 }
+    { message: "Mau cari apa bang? Gaada apa-apa loh.." },
+    { status: 404 }
   );
 }
