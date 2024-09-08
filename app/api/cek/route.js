@@ -5,7 +5,7 @@ export async function POST(req) {
   try {
     const { userId, zoneId } = await req.json();
 
-    const externalRes = await fetch("https://id.xcash.gg/cek", {
+    const externalRes = await fetch(process.env.NEXT_PUBLIC_API_BASE_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
